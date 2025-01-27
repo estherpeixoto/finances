@@ -24,38 +24,34 @@ class NavigationRailExampleApp extends StatelessWidget {
       theme: ThemeData(useMaterial3: true),
       debugShowCheckedModeBanner: false,
       title: 'Finances',
-      home: const NavRailExample(),
+      home: const BaseLayout(),
     );
   }
 }
 
-class NavRailExample extends StatefulWidget {
-  const NavRailExample({super.key});
+class BaseLayout extends StatefulWidget {
+  const BaseLayout({super.key});
 
   @override
-  State<NavRailExample> createState() => _NavRailExampleState();
+  State<BaseLayout> createState() => _BaseLayoutState();
 }
 
-class _NavRailExampleState extends State<NavRailExample> {
+class _BaseLayoutState extends State<BaseLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Navbar(),
       body: SafeArea(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Sidebar(),
             const VerticalDivider(thickness: 1, width: 1),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Consumer<SidebarProvider>(
-                    builder: (context, sidebar, child) {
-                      return Text('selectedIndex: ${sidebar.selectedIndex}');
-                    },
-                  ),
-                ],
+              child: Consumer<SidebarProvider>(
+                builder: (context, sidebar, child) {
+                  return pages[sidebar.selectedIndex].destination;
+                },
               ),
             ),
           ],

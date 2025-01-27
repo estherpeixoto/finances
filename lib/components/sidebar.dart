@@ -1,30 +1,33 @@
+import 'package:finances/pages/accounts_list.dart';
+import 'package:finances/pages/overview.dart';
 import 'package:finances/providers/navbar_provider.dart';
 import 'package:finances/providers/sidebar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ExampleDestination {
-  const ExampleDestination(this.label, this.icon);
+class Page {
+  const Page(this.label, this.icon, this.destination);
 
   final String label;
   final Widget icon;
+  final Widget destination;
 }
 
-const List<ExampleDestination> destinations = <ExampleDestination>[
-  ExampleDestination('Overview', Icon(Icons.dashboard_outlined)),
-  ExampleDestination('Accounts', Icon(Icons.account_balance_outlined)),
-  ExampleDestination('Transactions', Icon(Icons.payments_outlined)),
-  ExampleDestination('Credit cards', Icon(Icons.credit_card_outlined)),
-  ExampleDestination('Budgets', Icon(Icons.percent_outlined)),
-  ExampleDestination('Goals', Icon(Icons.ads_click_outlined)),
-  ExampleDestination('Reports', Icon(Icons.find_in_page_outlined)),
-  ExampleDestination('Charts', Icon(Icons.pie_chart_outline)),
-  ExampleDestination('Categories', Icon(Icons.local_offer_outlined)),
-  ExampleDestination('Tools', Icon(Icons.build_outlined)),
-  ExampleDestination('Settings', Icon(Icons.settings_outlined)),
-  ExampleDestination('About', Icon(Icons.info_outline)),
-  ExampleDestination('Synchronize', Icon(Icons.sync_outlined)),
-  ExampleDestination('Dark mode', Icon(Icons.dark_mode_outlined)),
+const List<Page> pages = <Page>[
+  Page('Overview', Icon(Icons.dashboard_outlined), Overview()),
+  Page('Accounts', Icon(Icons.account_balance_outlined), AccountsList()),
+  // Page('Transactions', Icon(Icons.payments_outlined)),
+  // Page('Credit cards', Icon(Icons.credit_card_outlined)),
+  // Page('Budgets', Icon(Icons.percent_outlined)),
+  // Page('Goals', Icon(Icons.ads_click_outlined)),
+  // Page('Reports', Icon(Icons.find_in_page_outlined)),
+  // Page('Charts', Icon(Icons.pie_chart_outline)),
+  // Page('Categories', Icon(Icons.local_offer_outlined)),
+  // Page('Tools', Icon(Icons.build_outlined)),
+  // Page('Settings', Icon(Icons.settings_outlined)),
+  // Page('About', Icon(Icons.info_outline)),
+  // Page('Synchronize', Icon(Icons.sync_outlined)),
+  // Page('Dark mode', Icon(Icons.dark_mode_outlined)),
 ];
 
 class Sidebar extends StatefulWidget {
@@ -56,8 +59,8 @@ class _SidebarState extends State<Sidebar> {
           },
           labelType: labelType,
           extended: navbar.extended,
-          destinations: destinations.map(
-            (ExampleDestination destination) {
+          destinations: pages.map(
+            (Page destination) {
               return NavigationRailDestination(
                 label: Text(destination.label),
                 icon: destination.icon,
