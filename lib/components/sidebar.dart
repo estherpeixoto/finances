@@ -1,4 +1,4 @@
-import 'package:finances/pages/accounts_list.dart';
+import 'package:finances/pages/accounts/accounts_list.dart';
 import 'package:finances/pages/overview.dart';
 import 'package:finances/providers/navbar_provider.dart';
 import 'package:finances/providers/sidebar_provider.dart';

@@ -47,16 +47,19 @@ class _NavbarState extends State<Navbar> {
           ],
         ),
         const SizedBox(width: 8),
-        FloatingActionButton.small(
-          onPressed: () {},
-          shape: CircleBorder(),
-          elevation: 0.0,
-          focusElevation: 0.0,
-          highlightElevation: 0.0,
-          hoverElevation: 0.0,
-          tooltip: 'Show menu',
-          child: const Icon(Icons.add_outlined),
-        ),
+        Consumer<NavbarProvider>(builder: (context, navbar, child) {
+          // @TODO Make this work
+          return FloatingActionButton.small(
+            onPressed: navbar.addFunction,
+            shape: CircleBorder(),
+            elevation: 0.0,
+            focusElevation: 0.0,
+            highlightElevation: 0.0,
+            hoverElevation: 0.0,
+            tooltip: 'Show menu',
+            child: const Icon(Icons.add_outlined),
+          );
+        }),
         const SizedBox(width: 8),
         IconButton(
           onPressed: () {},

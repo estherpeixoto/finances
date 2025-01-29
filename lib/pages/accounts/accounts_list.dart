@@ -93,7 +93,7 @@ class _AccountsListState extends State<AccountsList> {
                         fontWeight: FontWeight.w400,
                         color: Color(0xF2979797),
                       ),
-                      softWrap: true,
+                      softWrap: true, // @TODO Something is overflowing when in small resolutions, don't know if is in here
                     ),
                   );
                 },
